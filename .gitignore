@@ -1,0 +1,25 @@
+# Dependencies
+vendor/
+node_modules/
+
+# Environment & Config
+.env
+config.php
+
+# Logs
+*.log
+logs/
+
+# Cache
+cache/
+temp/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
