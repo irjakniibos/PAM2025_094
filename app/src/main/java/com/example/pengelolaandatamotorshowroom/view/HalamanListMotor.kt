@@ -1,5 +1,6 @@
 package com.example.pengelolaandatamotorshowroom.view
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -34,9 +36,18 @@ fun HalamanListMotor(
     modifier: Modifier = Modifier
 ) {
     val uiState = viewModel.uiState
+    val context = LocalContext.current
 
     LaunchedEffect(brandId) {
         viewModel.loadMotors(brandId, brandName)
+    }
+
+    // Tampilkan toast ketika ada successMessage
+    LaunchedEffect(uiState.successMessage) {
+        uiState.successMessage?.let { message ->
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            viewModel.clearSuccessMessage()
+        }
     }
 
     Box(modifier = modifier.fillMaxSize()) {
