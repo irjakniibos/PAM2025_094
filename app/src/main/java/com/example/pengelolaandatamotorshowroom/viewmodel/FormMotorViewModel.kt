@@ -149,6 +149,7 @@ class FormMotorViewModel(private val repositoryMotor: RepositoryMotor) : ViewMod
                         harga = uiState.harga.toDouble(),
                         warna = uiState.warna
                     )
+                    uiState = uiState.copy(isLoading = false, successMessage = "Motor berhasil diperbarui")
                 } else {
                     repositoryMotor.createMotor(
                         namaMotor = uiState.namaMotor,
@@ -159,16 +160,29 @@ class FormMotorViewModel(private val repositoryMotor: RepositoryMotor) : ViewMod
                         warna = uiState.warna,
                         stokAwal = uiState.stokAwal.toInt()
                     )
+                    uiState = uiState.copy(isLoading = false, successMessage = "Motor berhasil ditambahkan")
                 }
-                uiState = uiState.copy(isLoading = false)
                 onSuccess()
             } catch (e: Exception) {
+                val errorMsg = if (e.message?.contains("409") == true || 
+                    e.message?.contains("400") == true ||
+                    e.message?.contains("Bad Request", ignoreCase = true) == true ||
+                    e.message?.contains("duplicate", ignoreCase = true) == true || 
+                    e.message?.contains("sudah ada", ignoreCase = true) == true) {
+                    "Motor sudah ada"
+                } else {
+                    e.message ?: "Terjadi kesalahan"
+                }
                 uiState = uiState.copy(
                     isLoading = false,
-                    errorMessage = e.message
+                    errorMessage = errorMsg
                 )
             }
         }
+    }
+
+    fun clearSuccessMessage() {
+        uiState = uiState.copy(successMessage = null)
     }
 }
 
@@ -190,5 +204,6 @@ data class FormMotorUiState(
     val warnaError: String? = null,
     val stokAwalError: String? = null,
     val isLoading: Boolean = false,
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
+    val successMessage: String? = null
 )
