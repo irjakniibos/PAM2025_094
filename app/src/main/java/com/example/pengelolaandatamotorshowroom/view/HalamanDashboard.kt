@@ -1,5 +1,6 @@
 package com.example.pengelolaandatamotorshowroom.view
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -33,6 +35,15 @@ fun HalamanDashboard(
 ) {
     val uiState = viewModel.uiState
     var showLogoutDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+
+    // Tampilkan toast ketika ada successMessage
+    LaunchedEffect(uiState.successMessage) {
+        uiState.successMessage?.let { message ->
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            viewModel.clearSuccessMessage()
+        }
+    }
 
     Box(modifier = modifier.fillMaxSize()) {
 
@@ -202,6 +213,7 @@ fun HalamanDashboard(
             confirmButton = {
                 Button(onClick = {
                     showLogoutDialog = false
+                    Toast.makeText(context, "Logout berhasil", Toast.LENGTH_SHORT).show()
                     viewModel.logout(onLogout)
                 }) {
                     Text(stringResource(R.string.btn_yes))
