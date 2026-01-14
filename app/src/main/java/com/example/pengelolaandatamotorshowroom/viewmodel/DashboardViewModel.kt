@@ -86,8 +86,10 @@ class DashboardViewModel(
             try {
                 if (uiState.isEditMode && uiState.selectedBrandId != null) {
                     repositoryBrand.updateBrand(uiState.selectedBrandId!!, uiState.dialogBrandName)
+                    uiState = uiState.copy(successMessage = "Brand berhasil diperbarui")
                 } else {
                     repositoryBrand.createBrand(uiState.dialogBrandName)
+                    uiState = uiState.copy(successMessage = "Brand berhasil ditambahkan")
                 }
                 hideDialog()
                 loadBrands()
@@ -113,6 +115,7 @@ class DashboardViewModel(
         viewModelScope.launch {
             try {
                 repositoryBrand.deleteBrand(brand.id)
+                uiState = uiState.copy(successMessage = "Brand berhasil dihapus")
                 hideDeleteDialog()
                 loadBrands()
             } catch (e: Exception) {
@@ -133,12 +136,17 @@ class DashboardViewModel(
             }
         }
     }
+
+    fun clearSuccessMessage() {
+        uiState = uiState.copy(successMessage = null)
+    }
 }
 
 data class DashboardUiState(
     val brands: List<DataBrand> = emptyList(),
     val isLoading: Boolean = false,
     val errorMessage: String? = null,
+    val successMessage: String? = null,
     val showDialog: Boolean = false,
     val isEditMode: Boolean = false,
     val dialogBrandName: String = "",
