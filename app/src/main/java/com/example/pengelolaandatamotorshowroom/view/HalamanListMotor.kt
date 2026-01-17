@@ -146,11 +146,11 @@ fun HalamanListMotor(
     if (uiState.showDeleteDialog) {
         AlertDialog(
             onDismissRequest = { viewModel.hideDeleteDialog() },
-            title = { Text(stringResource(R.string.delete_motor_title), color = OnBackground) },
+            title = { Text(stringResource(R.string.delete_motor_title), color = OnSurface) },
             text = {
                 Text(
                     "Yakin hapus motor ${uiState.motorToDelete?.nama_motor}?",
-                    color = OnBackground
+                    color = OnSurface
                 )
             },
             confirmButton = {
@@ -187,7 +187,7 @@ fun HalamanListMotor(
                     text = stringResource(
                         if (uiState.isAddStok) R.string.stock_add_title else R.string.stock_reduce_title
                     ),
-                    color = OnBackground
+                    color = OnSurface
                 )
             },
             text = {
@@ -195,7 +195,7 @@ fun HalamanListMotor(
                     stringResource(
                         if (uiState.isAddStok) R.string.stock_add_confirm else R.string.stock_reduce_confirm
                     ),
-                    color = OnBackground
+                    color = OnSurface
                 )
             },
             confirmButton = {

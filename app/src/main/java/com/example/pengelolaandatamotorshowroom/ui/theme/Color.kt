@@ -6,9 +6,9 @@ import androidx.compose.ui.graphics.Color
 val Primary = Color(0xFF472624) // #472624 - Button, AppBar, FAB (COKLAT)
 val OnPrimary = Color(0xFFFCDFCF) // #fcdfcf - Text on primary (CREAM)
 
-// Background Colors - Cream
-val Background = Color(0xFFFCDFCF) // #fcdfcf - Background utama (CREAM)
-val OnBackground = Color(0xFF472624) // #472624 - Text on background (COKLAT)
+// Background Colors - Coklat
+val Background = Color(0xFF8B5A3C) // #8B5A3C - Background utama (COKLAT)
+val OnBackground = Color(0xFFFCDFCF) // #fcdfcf - Text on background (CREAM)
 
 // Surface Colors
 val Surface = Color(0xFFFAF0E6) // Cream sedikit lebih gelap untuk dialog

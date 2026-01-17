@@ -151,7 +151,8 @@ fun HalamanDashboard(
                             R.string.brand_edit_title
                         else
                             R.string.brand_add_title
-                    )
+                    ),
+                    color = OnSurface
                 )
             },
             text = {
@@ -186,10 +187,10 @@ fun HalamanDashboard(
         AlertDialog(
             onDismissRequest = { viewModel.hideDeleteDialog() },
             title = {
-                Text(stringResource(R.string.btn_delete))
+                Text(stringResource(R.string.btn_delete), color = OnSurface)
             },
             text = {
-                Text(stringResource(R.string.brand_delete_confirm))
+                Text(stringResource(R.string.brand_delete_confirm), color = OnSurface)
             },
             confirmButton = {
                 Button(onClick = { viewModel.deleteBrand() }) {
@@ -208,8 +209,8 @@ fun HalamanDashboard(
     if (showLogoutDialog) {
         AlertDialog(
             onDismissRequest = { showLogoutDialog = false },
-            title = { Text(stringResource(R.string.btn_logout)) },
-            text = { Text(stringResource(R.string.logout_confirm)) },
+            title = { Text(stringResource(R.string.btn_logout), color = OnSurface) },
+            text = { Text(stringResource(R.string.logout_confirm), color = OnSurface) },
             confirmButton = {
                 Button(onClick = {
                     showLogoutDialog = false

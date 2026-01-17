@@ -113,7 +113,7 @@ fun HalamanDetailMotor(
                                     color = Primary
                                 )
 
-                                Divider(color = OnBackground.copy(alpha = 0.3f))
+                                Divider(color = CardOnBackground.copy(alpha = 0.3f))
 
                                 DetailRow(stringResource(R.string.motor_brand), motor.nama_brand)
                                 DetailRow(stringResource(R.string.motor_type), motor.tipe)
@@ -163,7 +163,7 @@ fun DetailRow(
         Text(
             text = label,
             style = MaterialTheme.typography.bodyLarge,
-            color = OnBackground.copy(alpha = 0.7f)
+            color = CardOnBackground.copy(alpha = 0.7f)
         )
         Text(
             text = value,

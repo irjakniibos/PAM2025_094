@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.PengelolaanDataMotorShowroom" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.PengelolaanDataMotorShowroom" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/brown_background</item>
+        <item name="android:statusBarColor">@color/brown_background</item>
+        <item name="android:navigationBarColor">@color/brown_background</item>
+    </style>
 </resources>
