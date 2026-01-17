@@ -83,7 +83,7 @@ app/src/main/java/com/example/pengelolaandatamotorshowroom/
 #### Edit Brand
 | Before | After |
 |:------:|:-----:|
-| ![Before Edit Brand](docs/screenshots/BeforeEditBrand.png) | ![After Edit Brand](docs/screenshots/AfterEditBrand.png.png) |
+| ![Before Edit Brand](docs/screenshots/BeforeEditBrand.png) | ![After Edit Brand](docs/screenshots/AfterEditBrand.png) |
 
 > Mengubah nama brand yang sudah ada
 
